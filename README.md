@@ -49,7 +49,7 @@ Deberá crearse un usuario en la base de datos para conexión de la aplicación.
   * Copiar el driver del postgresql y pegarlo en la carpeta main, que fue creada en el punto 1.
   * Dentro de la carpeta main, crear un archivo de nombre **module.xml** y agregue el siguiente contenido (Reemplazar postgresql-XXX.jar por el nombre del driver):
   
-  ```
+      ```
 	<?xml version="1.0" encoding="UTF-8"?>
         <module xmlns="urn:jboss:module:1.0" name="org.postgresql">
          <resources>
@@ -63,10 +63,12 @@ Deberá crearse un usuario en la base de datos para conexión de la aplicación.
 	```
     
    * Configuración del datasource en el standalone del Wildfly
+      
       Abrir el directorio **$WILDFLY_HOME/standalone/configuration/**
+      
       Dentro de la carpeta **/configuration/**, abra el archivo **standalone-full.xml o standalone.xml** y agregue el driver de postgresql. Ejemplo: 
    
-   ```
+        ```
 	   <drivers>
           <driver name="h2" module="com.h2database.h2">
              <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
@@ -79,7 +81,7 @@ Deberá crearse un usuario en la base de datos para conexión de la aplicación.
       
       Dentro de la carpeta **/configuration/**, abra el archivo **standalone-full.xml o standalone.xml** busque los marcadores **<datasources></datasourses>** y dentro de los mismos agregue el siguiente contenido:
       
-      ```
+      
 	<datasource jndi-name="java:jboss/datasources/covid19DS" pool-name="covid19DS" enabled="true" use-java-context="true">
           <connection-url>jdbc:postgresql://localhost:5432/covid19</connection-url>
           <driver-class>org.postgresql.Driver</driver-class>
@@ -100,10 +102,12 @@ Deberá crearse un usuario en la base de datos para conexión de la aplicación.
               <prepared-statement-cache-size>32</prepared-statement-cache-size>
           </statement>
         </datasource>
-	```
+	
+	
 ###Properties
   
   Es necesario la creación de un archivo con el nombre **"config.properties"** en el servidor en el siguiente path: **/opt/portal-covid-core/** y colocar el siguiente contenido:
+
 ```  
   SII_USERNAME=usuario
   SII_PASSWORD=contrasenha
