@@ -38,14 +38,18 @@ Deberá crearse un usuario en la base de datos para conexión de la aplicación.
   Descargue el servidor desde la página oficial de wildfly con la versión 18.0.1: http://wildfly.org/downloads/ 
   
   Configurar Módulo de Postgresql en Wildfly
-    * Abrir la carpeta del directorio
+  
+  * Abrir la carpeta del directorio
+  
       ```
       $WILDFLY_HOME/modules/system/layers/base/org/postgresql/main
       ```
-    * Crear las carpetas: org, postgresql y main si no se encuentran creadas.
-    * Copiar el driver del postgresql y pegarlo en la carpeta main, que fue creada en el punto 1.
-    * Dentro de la carpeta main, crear un archivo de nombre **module.xml** y agregue el siguiente contenido (Reemplazar postgresql-XXX.jar por el nombre del driver):
-      ```
+  
+  * Crear las carpetas: org, postgresql y main si no se encuentran creadas.
+  * Copiar el driver del postgresql y pegarlo en la carpeta main, que fue creada en el punto 1.
+  * Dentro de la carpeta main, crear un archivo de nombre **module.xml** y agregue el siguiente contenido (Reemplazar postgresql-XXX.jar por el nombre del driver):
+  
+  ```
 	<?xml version="1.0" encoding="UTF-8"?>
         <module xmlns="urn:jboss:module:1.0" name="org.postgresql">
          <resources>
@@ -57,10 +61,12 @@ Deberá crearse un usuario en la base de datos para conexión de la aplicación.
          </dependencies>
         </module>
 	```
-    * Configuración del datasource en el standalone del Wildfly
+    
+   * Configuración del datasource en el standalone del Wildfly
       Abrir el directorio **$WILDFLY_HOME/standalone/configuration/**
       Dentro de la carpeta **/configuration/**, abra el archivo **standalone-full.xml o standalone.xml** y agregue el driver de postgresql. Ejemplo: 
-       ```
+   
+   ```
 	   <drivers>
           <driver name="h2" module="com.h2database.h2">
              <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
@@ -70,8 +76,10 @@ Deberá crearse un usuario en la base de datos para conexión de la aplicación.
           </driver>
         </drivers>
        ```
+      
       Dentro de la carpeta **/configuration/**, abra el archivo **standalone-full.xml o standalone.xml** busque los marcadores **<datasources></datasourses>** y dentro de los mismos agregue el siguiente contenido:
-        ```
+      
+      ```
 	<datasource jndi-name="java:jboss/datasources/covid19DS" pool-name="covid19DS" enabled="true" use-java-context="true">
           <connection-url>jdbc:postgresql://localhost:5432/covid19</connection-url>
           <driver-class>org.postgresql.Driver</driver-class>
