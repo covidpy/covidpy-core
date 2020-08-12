@@ -1,31 +1,52 @@
-# covidpy-core
-Proyecto core (backend implementation) para el sistema de seguimiento de pacientes Covid19 Paraguay. Proyecto backend encargado de realizar las consultas a la base de datos 
+#  covidpy-core
 
-#Tecnologías
-	Servidor de Aplicación: Wildfly 18.0.1
-	Sistema Operativo: Centos 7. 
-	Backend: Java EE
-	Base de Datos: Postgresql 12.2
-	Maven: Gestión de dependencias para proyecto Backend. Versión 3.3.9
-  Git: control de versionamiento.
-  Eclipse oxygen o superior con Jboss Tools instalado.
-    
-Nota: 
-  * Este proyecto se conecta al Sistema de Intercambio de Información.
-  * Todos los cambios actualizados del código fuente se enccuentran en la rama master
+Proyecto core (backend implementation) para el sistema de seguimiento de pacientes Covid19 Paraguay. Proyecto backend encargado de realizar las consultas a la base de datos Project Title
 
-#Base de datos
-  El backup de base de datos se encuentra en la carpeta bd.
-  Deberá crearse un usuario en la base de datos para conexión de la aplicación.
-#Wildfly
+## Introducción
+
+Estas instrucciones permitirán levantar el proyecto core.
+
+### Tecnologías
+
+Las tecnologías utilizadas por el proyecto son:
+
+```
+Servidor de Aplicación: Wildfly 18.0.1
+Sistema Operativo: Centos 7. 
+Backend: Java EE
+Base de Datos: Postgresql 12.2
+Maven: Gestión de dependencias para proyecto Backend. Versión 3.3.9
+Git: control de versionamiento.
+Eclipse oxygen o superior con Jboss Tools instalado.
+```
+
+```
+Nota:
+
+* Este proyecto se conecta al Sistema de Intercambio de Información.
+* Todos los cambios actualizados del código fuente se enccuentran en la rama master
+
+```
+
+### Base de datos
+
+El backup de base de datos se encuentra en la carpeta "bd". 
+Deberá crearse un usuario en la base de datos para conexión de la aplicación.
+
+* [Postgresql](https://www.postgresql.org/docs/12/app-pgrestore.html) - Como restaurar backup de base de datos.
+
+### Wildfly
+  
   Descargue el servidor desde la página oficial de wildfly con la versión 18.0.1: http://wildfly.org/downloads/ 
+  
   Configurar Módulo de Postgresql en Wildfly
     1) Abrir la carpeta del directorio
       $WILDFLY_HOME/modules/system/layers/base/org/postgresql/main
     2) Crear las carpetas: org, postgresql y main si no se encuentran creadas.
 	  3) Copiar el driver del postgresql y pegarlo en la carpeta main, que fue creada en el punto 1.
 	  4) Dentro de la carpeta main, crear un archivo de nombre module.xml y agregue el siguiente 	contenido (Reemplazar postgresql-XXX.jar por el nombre del driver):
-      <?xml version="1.0" encoding="UTF-8"?>
+      
+	  <?xml version="1.0" encoding="UTF-8"?>
         <module xmlns="urn:jboss:module:1.0" name="org.postgresql">
          <resources>
          <resource-root path="postgresql-XXX.jar"/>
@@ -38,7 +59,8 @@ Nota:
     5) Configuración del datasource en el standalone del Wildfly
       Abrir el directorio $WILDFLY_HOME/standalone/configuration/
       Dentro de la carpeta /configuration/, abra el archivo standalone-full.xml o standalone.xml y agregue el driver de postgresql. Ejemplo: 
-        <drivers>
+       
+	   <drivers>
           <driver name="h2" module="com.h2database.h2">
              <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
           </driver>
@@ -48,7 +70,8 @@ Nota:
         </drivers>
 
       Dentro de la carpeta /configuration/, abra el archivo standalone-full.xml o standalone.xml busque los marcadores <datasources></datasourses> y dentro de los mismos agregue el siguiente contenido:
-        <datasource jndi-name="java:jboss/datasources/ covid19DS" pool-name=" covid19DS" enabled="true" use-java-context="true">
+        
+		<datasource jndi-name="java:jboss/datasources/covid19DS" pool-name="covid19DS" enabled="true" use-java-context="true">
           <connection-url>jdbc:postgresql://localhost:5432/covid19</connection-url>
           <driver-class>org.postgresql.Driver</driver-class>
           <driver>postgresql-XXX.jar</driver>
@@ -69,8 +92,10 @@ Nota:
           </statement>
         </datasource>
 
-#Properties
+###Properties
+  
   Es necesario la creación de un archivo con el nombre "config.properties" en el servidor en el siguiente path: /opt/portal-covid-core/ y colocar el siguiente contenido:
+```  
   SII_USERNAME=usuario
   SII_PASSWORD=contrasenha
   URL_SERVER=url
@@ -80,9 +105,12 @@ Nota:
   covid19_diagnostico_positivo_instrucciones_recomendacion_cuidadores=- El cuidador debe usar mascarilla (tapabocas) cubriendo la boca y la nariz, ajustada a la cara, cuando ingrese a la habitaci\u00f3n de la persona aislada.\n- NO TOCAR LA MASCARILLA, si se moja o humedece, debe ser cambiada de inmediato.\n- Debe desechar la mascarilla despu\u00e9s de su uso y debe lavarse las manos de manera inmediata.
   covid19_diagnostico_positivo_instrucciones_recomendacion_limpieza_1=- Utensilios y platos: Lavar con agua + detergente. Luego poner en remojo al menos por 2 minutos en abundante agua con hipoclorito de sodio. Escurrir hasta que sequen solos.\nF\u00f3rmula para agua de remojo: 1 cucharada (2ml) de hipoclorito de sodio (al 5-6%) por cada 4 litros de agua.\n- Superficies: Limpie y desinfecte diariamente las superficies que se tocan con mayor frecuencia (mesita de luz, somieres, picaporte y otros muebles del dormitorio) con hipoclorito de sodio.\nF\u00f3rmula Hipoclorito de concentraci\u00f3n al 5-6%:  Para diluirse en proporci\u00f3n 1:10:\n1 parte de Hipoclorito de sodio por 9 de agua.\nEjemplo: 1 taza de cloro y 9 tazas de agua.
   covid19_diagnostico_positivo_instrucciones_recomendacion_limpieza_2=- Pisos y ba\u00f1os: Primero limpiar con agua y detergentes comunes, luego repasar con hipoclorito de sodio (al 5-6%), dejar actuar por 10 minutos.\nEjemplo: \u00bd litro de hipoclorito de sodio en 10 litros de agua.\n- Ropas:\n- Colocar en bolsa de ropas, no agite la bolsa y evite el contacto directo con la piel.\n- Lavar ropas, ropa de cama, toallas de ba\u00f1o con agua caliente y jab\u00f3n o en lavarropas a 60-90\u00b0C con detergente de uso dom\u00e9stico.
+```
  
-#Levantar el proyecto backend
+###Levantar el proyecto backend
+  
+  ```
   Utilizando Eclipse posicionarse sobre el proyecto y con el botón derecho del mouse buscar la opción “Export” luego “War File”.
   Elegir en que carpeta desea crear el archivo war y seleccione la opción “Overwrite existing file”. Por último clic en el botón Finish. 
   Proceda a deployar en el servidor wildfly.
-  
+  ```
