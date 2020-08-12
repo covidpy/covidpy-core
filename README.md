@@ -1,6 +1,6 @@
 #  covidpy-core
 
-Proyecto core (backend implementation) para el sistema de seguimiento de pacientes Covid19 Paraguay. Proyecto backend encargado de realizar las consultas a la base de datos Project Title
+Proyecto core (backend implementation) para el sistema de seguimiento de pacientes Covid19 Paraguay. Proyecto backend encargado de realizar las consultas a la base de datos.
 
 ## Introducción
 
@@ -20,17 +20,15 @@ Git: control de versionamiento.
 Eclipse oxygen o superior con Jboss Tools instalado.
 ```
 
-```
 Nota:
 
 * Este proyecto se conecta al Sistema de Intercambio de Información.
 * Todos los cambios actualizados del código fuente se enccuentran en la rama master
 
-```
 
 ### Base de datos
 
-El backup de base de datos se encuentra en la carpeta "bd". 
+El backup de base de datos se encuentra en la carpeta **"bd"**. 
 Deberá crearse un usuario en la base de datos para conexión de la aplicación.
 
 * [Postgresql](https://www.postgresql.org/docs/12/app-pgrestore.html) - Como restaurar backup de base de datos.
@@ -41,12 +39,14 @@ Deberá crearse un usuario en la base de datos para conexión de la aplicación.
   
   Configurar Módulo de Postgresql en Wildfly
     1) Abrir la carpeta del directorio
+      ```
       $WILDFLY_HOME/modules/system/layers/base/org/postgresql/main
+      ```
     2) Crear las carpetas: org, postgresql y main si no se encuentran creadas.
-	  3) Copiar el driver del postgresql y pegarlo en la carpeta main, que fue creada en el punto 1.
-	  4) Dentro de la carpeta main, crear un archivo de nombre module.xml y agregue el siguiente 	contenido (Reemplazar postgresql-XXX.jar por el nombre del driver):
-      
-	  <?xml version="1.0" encoding="UTF-8"?>
+    3) Copiar el driver del postgresql y pegarlo en la carpeta main, que fue creada en el punto 1.
+    4) Dentro de la carpeta main, crear un archivo de nombre **module.xml** y agregue el siguiente contenido (Reemplazar postgresql-XXX.jar por el nombre del driver):
+      ```
+	<?xml version="1.0" encoding="UTF-8"?>
         <module xmlns="urn:jboss:module:1.0" name="org.postgresql">
          <resources>
          <resource-root path="postgresql-XXX.jar"/>
@@ -56,10 +56,11 @@ Deberá crearse un usuario en la base de datos para conexión de la aplicación.
          <module name="javax.transaction.api"/>
          </dependencies>
         </module>
+	```
     5) Configuración del datasource en el standalone del Wildfly
-      Abrir el directorio $WILDFLY_HOME/standalone/configuration/
-      Dentro de la carpeta /configuration/, abra el archivo standalone-full.xml o standalone.xml y agregue el driver de postgresql. Ejemplo: 
-       
+      Abrir el directorio **$WILDFLY_HOME/standalone/configuration/**
+      Dentro de la carpeta **/configuration/**, abra el archivo **standalone-full.xml o standalone.xml** y agregue el driver de postgresql. Ejemplo: 
+       ```
 	   <drivers>
           <driver name="h2" module="com.h2database.h2">
              <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
@@ -68,10 +69,10 @@ Deberá crearse un usuario en la base de datos para conexión de la aplicación.
              <driver-class>org.postgresql.Driver</driver-class>
           </driver>
         </drivers>
-
-      Dentro de la carpeta /configuration/, abra el archivo standalone-full.xml o standalone.xml busque los marcadores <datasources></datasourses> y dentro de los mismos agregue el siguiente contenido:
-        
-		<datasource jndi-name="java:jboss/datasources/covid19DS" pool-name="covid19DS" enabled="true" use-java-context="true">
+       ```
+      Dentro de la carpeta **/configuration/**, abra el archivo **standalone-full.xml o standalone.xml** busque los marcadores **<datasources></datasourses>** y dentro de los mismos agregue el siguiente contenido:
+        ```
+	<datasource jndi-name="java:jboss/datasources/covid19DS" pool-name="covid19DS" enabled="true" use-java-context="true">
           <connection-url>jdbc:postgresql://localhost:5432/covid19</connection-url>
           <driver-class>org.postgresql.Driver</driver-class>
           <driver>postgresql-XXX.jar</driver>
@@ -91,10 +92,10 @@ Deberá crearse un usuario en la base de datos para conexión de la aplicación.
               <prepared-statement-cache-size>32</prepared-statement-cache-size>
           </statement>
         </datasource>
-
+	```
 ###Properties
   
-  Es necesario la creación de un archivo con el nombre "config.properties" en el servidor en el siguiente path: /opt/portal-covid-core/ y colocar el siguiente contenido:
+  Es necesario la creación de un archivo con el nombre **"config.properties"** en el servidor en el siguiente path: **/opt/portal-covid-core/** y colocar el siguiente contenido:
 ```  
   SII_USERNAME=usuario
   SII_PASSWORD=contrasenha
