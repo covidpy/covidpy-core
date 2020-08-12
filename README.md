@@ -38,13 +38,13 @@ Deberá crearse un usuario en la base de datos para conexión de la aplicación.
   Descargue el servidor desde la página oficial de wildfly con la versión 18.0.1: http://wildfly.org/downloads/ 
   
   Configurar Módulo de Postgresql en Wildfly
-    1) Abrir la carpeta del directorio
+    * Abrir la carpeta del directorio
       ```
       $WILDFLY_HOME/modules/system/layers/base/org/postgresql/main
       ```
-    2) Crear las carpetas: org, postgresql y main si no se encuentran creadas.
-    3) Copiar el driver del postgresql y pegarlo en la carpeta main, que fue creada en el punto 1.
-    4) Dentro de la carpeta main, crear un archivo de nombre **module.xml** y agregue el siguiente contenido (Reemplazar postgresql-XXX.jar por el nombre del driver):
+    * Crear las carpetas: org, postgresql y main si no se encuentran creadas.
+    * Copiar el driver del postgresql y pegarlo en la carpeta main, que fue creada en el punto 1.
+    * Dentro de la carpeta main, crear un archivo de nombre **module.xml** y agregue el siguiente contenido (Reemplazar postgresql-XXX.jar por el nombre del driver):
       ```
 	<?xml version="1.0" encoding="UTF-8"?>
         <module xmlns="urn:jboss:module:1.0" name="org.postgresql">
@@ -57,7 +57,7 @@ Deberá crearse un usuario en la base de datos para conexión de la aplicación.
          </dependencies>
         </module>
 	```
-    5) Configuración del datasource en el standalone del Wildfly
+    * Configuración del datasource en el standalone del Wildfly
       Abrir el directorio **$WILDFLY_HOME/standalone/configuration/**
       Dentro de la carpeta **/configuration/**, abra el archivo **standalone-full.xml o standalone.xml** y agregue el driver de postgresql. Ejemplo: 
        ```
