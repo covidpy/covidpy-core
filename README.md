@@ -23,7 +23,7 @@ Eclipse oxygen o superior con Jboss Tools instalado.
 Nota:
 
 * Este proyecto se conecta al Sistema de Intercambio de Información.
-* Todos los cambios actualizados del código fuente se enccuentran en la rama master
+* Todos los cambios actualizados del código fuente se encuentran en la rama master
 
 
 ### Base de datos
