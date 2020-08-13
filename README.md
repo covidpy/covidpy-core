@@ -33,6 +33,16 @@ Deberá crearse un usuario en la base de datos para conexión de la aplicación.
 
 * [Postgresql](https://www.postgresql.org/docs/12/app-pgrestore.html) - Como restaurar backup de base de datos.
 
+**Usuarios creados por defecto en la tabla covid19admin.usuario: **
+
+El usuario admin tiene el rol de operador, con el cual se podrá ingresar al backend y realizar altas, agendamientos entre otros, el usuario agendamiento tiene el rol del mismo nombre, con el cual se podrán correr los scripts de envio automáticos de sms.
+
+    ```
+      Usuario: admin   Contraseña: admin      
+      Usuario: agendamiento  Contraseña: agendamiento
+    ```
+    
+    
 ### Wildfly
   
   Descargue el servidor desde la página oficial de wildfly con la versión 18.0.1: http://wildfly.org/downloads/ 
@@ -106,7 +116,7 @@ Deberá crearse un usuario en la base de datos para conexión de la aplicación.
 	
 ###Properties
   
-  Es necesario la creación de un archivo con el nombre **"config.properties"** en el servidor en el siguiente path: **/opt/portal-covid-core/** y colocar el siguiente contenido:
+  Es necesario la creación de un archivo con el nombre **"config.properties"** en el servidor en el siguiente path: **/opt/covid-core/** y colocar el siguiente contenido:
 
 ```  
   SII_USERNAME=usuario
