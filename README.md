@@ -18,6 +18,7 @@ Base de Datos: Postgresql 12.2
 Maven: Gestión de dependencias para proyecto Backend. Versión 3.3.9
 Git: control de versionamiento.
 Eclipse oxygen o superior con Jboss Tools instalado.
+Redis
 ```
 
 Nota:
