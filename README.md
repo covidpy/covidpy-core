@@ -111,7 +111,7 @@ El usuario admin tiene el rol de operador, con el cual se podrá ingresar al bac
         </datasource>
 	
 	
-###Properties
+### Properties
   
   Es necesario la creación de un archivo con el nombre **"config.properties"** en el servidor en el siguiente path: **/opt/covid-core/** y colocar el siguiente contenido:
 
@@ -127,7 +127,7 @@ El usuario admin tiene el rol de operador, con el cual se podrá ingresar al bac
   covid19_diagnostico_positivo_instrucciones_recomendacion_limpieza_2=- Pisos y ba\u00f1os: Primero limpiar con agua y detergentes comunes, luego repasar con hipoclorito de sodio (al 5-6%), dejar actuar por 10 minutos.\nEjemplo: \u00bd litro de hipoclorito de sodio en 10 litros de agua.\n- Ropas:\n- Colocar en bolsa de ropas, no agite la bolsa y evite el contacto directo con la piel.\n- Lavar ropas, ropa de cama, toallas de ba\u00f1o con agua caliente y jab\u00f3n o en lavarropas a 60-90\u00b0C con detergente de uso dom\u00e9stico.
 ```
  
-###Levantar el proyecto backend
+### Levantar el proyecto backend
   
   ```
   Utilizando Eclipse posicionarse sobre el proyecto y con el botón derecho del mouse buscar la opción “Export” luego “War File”.
