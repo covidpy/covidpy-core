@@ -1,0 +1,1 @@
+INSERT INTO covid19admin.rol(activo, descripcion, nombre) values (true, 'Consulta', 'Consulta');

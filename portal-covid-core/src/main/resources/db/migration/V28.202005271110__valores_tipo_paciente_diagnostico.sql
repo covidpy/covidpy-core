@@ -1,0 +1,3 @@
+UPDATE covid19.tipo_paciente_diagnostico
+SET frecuencia_reporte_estado_salud_horas = frecuencia_reporte_ubicacion_horas,
+    debe_reportar_estado_salud = debe_reportar_ubicacion;

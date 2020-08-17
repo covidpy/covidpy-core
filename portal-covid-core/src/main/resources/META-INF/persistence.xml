@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence 
+    xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	version="2.1"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	
+	<persistence-unit name="mspbsCovid19">
+		<description>Forge Persistence Unit</description>
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:jboss/datasources/mspbsCovid19DS</jta-data-source>
+		<!--class>py.gov.senatics.portal.model.Clasificador</class-->
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.integration.envers.enabled" value="false" />
+			<property name="hibernate.transaction.flush_before_completion" value="true"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.ProgressDialect"/>
+			<property name="wildfly.jpa.default-unit" value="true"/>
+		</properties>		
+	</persistence-unit>
+	<persistence-unit name="covid19">
+		<description>Forge Persistence Unit</description>
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:jboss/datasources/covid19DS</jta-data-source>
+		<class>py.gov.senatics.portal.modelCovid19.FormSeccionDatosBasicos</class>
+		<class>py.gov.senatics.portal.modelCovid19.Paciente</class>
+		<class>py.gov.senatics.portal.modelCovid19.RegistroFormulario</class>
+		<class>py.gov.senatics.portal.modelCovid19.Registro</class>
+		<class>py.gov.senatics.portal.modelCovid19.RegistroUbicacion</class>
+		<class>py.gov.senatics.portal.modelCovid19.admin.Configuracion</class>
+		<class>py.gov.senatics.portal.modelCovid19.admin.Permiso</class>
+		<class>py.gov.senatics.portal.modelCovid19.admin.Rol</class>
+		<class>py.gov.senatics.portal.modelCovid19.admin.RolUsuario</class>
+		<class>py.gov.senatics.portal.modelCovid19.admin.Usuario</class>
+		<class>py.gov.senatics.portal.modelCovid19.CensoContacto</class>
+		<class>py.gov.senatics.portal.modelCovid19.FormSeccionDatosClinicos</class>
+		<class>py.gov.senatics.portal.modelCovid19.Notificacion</class>
+		<class>py.gov.senatics.portal.modelCovid19.PacienteDatosPersonalesBasicos</class>
+		<class>py.gov.senatics.portal.modelCovid19.admin.LoginAutomatico</class>
+		<class>py.gov.senatics.portal.modelCovid19.Pais</class>
+		<class>py.gov.senatics.portal.modelCovid19.Ciudad</class>
+		<class>py.gov.senatics.portal.modelCovid19.Departamento</class>
+		<class>py.gov.senatics.portal.modelCovid19.ReporteSalud</class>
+		<class>py.gov.senatics.portal.modelCovid19.HistoricoClinico</class>
+		<class>py.gov.senatics.portal.modelCovid19.HistoricoClinicoDatos</class>
+		<class>py.gov.senatics.portal.modelCovid19.PacienteEstadoSalud</class>
+		<class>py.gov.senatics.portal.modelCovid19.DiagnosticoRecomendacion</class>
+		<class>py.gov.senatics.portal.modelCovid19.DiagnosticoAccion</class>
+		<class>py.gov.senatics.portal.modelCovid19.HistoricoDiagnostico</class>
+		<class>py.gov.senatics.portal.modelCovid19.ExamenLaboratorial</class>
+		<class>py.gov.senatics.portal.modelCovid19.TipoPacienteDiagnostico</class>
+		<class>py.gov.senatics.portal.modelCovid19.TipoRegistro</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+			<!--<property name="hibernate.show_sql" value="true" />-->
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.integration.envers.enabled" value="false" />
+			<property name="hibernate.transaction.flush_before_completion" value="true"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
+		</properties>		
+	</persistence-unit>
+</persistence>

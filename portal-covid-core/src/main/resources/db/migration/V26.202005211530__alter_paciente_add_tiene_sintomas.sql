@@ -1,0 +1,1 @@
+ALTER TABLE covid19.paciente ADD COLUMN tiene_sintomas character varying(2);

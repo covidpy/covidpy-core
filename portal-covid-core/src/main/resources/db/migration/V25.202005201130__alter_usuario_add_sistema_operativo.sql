@@ -1,0 +1,1 @@
+alter table covid19admin.usuario add sistema_operativo varchar(255);

@@ -1,0 +1,4 @@
+flyway.url=jdbc:postgresql://localhost:5432/covid19
+flyway.user=
+flyway.password=
+flyway.schemas=covid19,covid19admin

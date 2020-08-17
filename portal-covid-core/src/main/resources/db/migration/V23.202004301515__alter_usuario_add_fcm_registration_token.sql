@@ -1,0 +1,1 @@
+alter table covid19admin.usuario add fcm_registration_token varchar(255);
