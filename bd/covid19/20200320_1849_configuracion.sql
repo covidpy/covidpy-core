@@ -1,0 +1,11 @@
+INSERT INTO covid19admin.configuracion (id_configuracion, estado, nombre_variable, valor_variable) VALUES (5, 'ACTIVO', 'url.host', 'https://url/');
+INSERT INTO covid19admin.configuracion (id_configuracion, estado, nombre_variable, valor_variable) VALUES (7, 'ACTIVO', 'adminportalpy.url', 'https://localhost:4200/#/');
+INSERT INTO covid19admin.configuracion (id_configuracion, estado, nombre_variable, valor_variable) VALUES (8, 'ACTIVO', 'adminportalpy.redis.host', 'localhost');
+INSERT INTO covid19admin.configuracion (id_configuracion, estado, nombre_variable, valor_variable) VALUES (9, 'ACTIVO', 'adminportalpy.redis.port', '1122');
+INSERT INTO covid19admin.configuracion (id_configuracion, estado, nombre_variable, valor_variable) VALUES (10, 'ACTIVO', 'adminportalpy.redis.timetolive', '60');
+INSERT INTO covid19admin.configuracion (id_configuracion, estado, nombre_variable, valor_variable) VALUES (11, 'ACTIVO', 'adminportalpy.redis.env', 'desarrollo');
+INSERT INTO covid19admin.configuracion (id_configuracion, estado, nombre_variable, valor_variable) VALUES (6, 'INACTIVO', 'adminportalpyA.url', 'https://url/');
+INSERT INTO covid19admin.configuracion (id_configuracion, estado, nombre_variable, valor_variable) VALUES (2, 'ACTIVO', 'mail.smtp.port', '4651');
+INSERT INTO covid19admin.configuracion (id_configuracion, estado, nombre_variable, valor_variable) VALUES (3, 'ACTIVO', 'mail.smtp.user', '');
+INSERT INTO covid19admin.configuracion (id_configuracion, estado, nombre_variable, valor_variable) VALUES (1, 'ACTIVO', 'mail.smtp.host', '');
+INSERT INTO covid19admin.configuracion (id_configuracion, estado, nombre_variable, valor_variable) VALUES (4, 'ACTIVO', 'mail.smtp.pass', '');
